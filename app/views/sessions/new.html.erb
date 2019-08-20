@@ -1,20 +1,31 @@
-<h1>Log in</h1>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-
-  <% flash.each do |key, value| %>
-    <div class="loginerror alert alert-danger" role="alert">
-      <%= content_tag(:div, value, class: "#{key}") %>
+<div class="new-whole">
+  <div class="new-center">
+    <div class="new-login">
+      <h1 class="new-apl_name">InstaGracious</h1>
+      <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+        <div class="new-message">
+        <% flash.each do |key, value| %>
+          <div class="loginerror alert alert-danger" role="alert">
+            <%= content_tag(:div, value, class: "#{key}") %>
+          </div>
+        <% end %>
+        </div>
+        <div class="new-input_item form-group">
+           <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス" %>
+        </div>
+        <div class="new-input_item form-group">
+           <%= f.password_field :password, class: "form-control", placeholder: "パスワード" %>
+        </div>
+        <div class="new-input_submit">
+          <%= f.submit "ログイン" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Log in" %>
-
-<% end %>
-<a class="btn btn-default" href="<%= new_user_path %>" role="button">アカウント登録</a>
+    <div class="new-to_account_registration">
+      <p>
+        アカウントをお持ちでないですか？
+        <%= link_to("登録する", new_user_path) %>
+      </p>
+    </div>
+  </div>
+</div>
