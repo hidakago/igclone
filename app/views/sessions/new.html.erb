@@ -5,8 +5,8 @@
       <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
         <div class="new-message">
         <% flash.each do |key, value| %>
-          <div class="loginerror alert alert-danger" role="alert">
-            <%= content_tag(:div, value, class: "#{key}") %>
+          <div class="message-text alert alert-danger" role="alert">
+            <%= content_tag(:div, value, class: "#{key}") if value %>
           </div>
         <% end %>
         </div>
