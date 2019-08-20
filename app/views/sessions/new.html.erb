@@ -1,0 +1,20 @@
+<h1>Log in</h1>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+
+  <% flash.each do |key, value| %>
+    <div class="loginerror alert alert-danger" role="alert">
+      <%= content_tag(:div, value, class: "#{key}") %>
+    </div>
+  <% end %>
+
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Log in" %>
+
+<% end %>
+<a class="btn btn-default" href="<%= new_user_path %>" role="button">アカウント登録</a>
