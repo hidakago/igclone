@@ -18,11 +18,37 @@
     flex-direction: column;
     justify-content: center;
   }
+  .content_user_info {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .content_user_link {
+    line-height: 60px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .content_user_link a {
+    color: #262626;
+    text-decoration: none;
+  }
+  .content_update_time {
+    line-height: 60px;
+    font-weight: bold;
+    font-size: 14px;
+  }
   .content_image_input {
     margin-top: 10px;
   }
   .content_comment {
     margin-top: 10px;
+    word-wrap: break-word;
+  }
+  .to_link a {
+    color: #999999;
+    text-decoration: none;
   }
   .content_submit {
     height: 28px;

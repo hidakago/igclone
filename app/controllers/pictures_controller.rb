@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   def index
     if logged_in?
-      @pictures = Picture.all
+      @pictures = Picture.all.order(:updated_at).reverse_order
     else
       redirect_to new_session_path
     end
@@ -16,9 +16,13 @@ class PicturesController < ApplicationController
   end
 
   def newconfirm
-    @picture = Picture.new(picture_params)
-    @picture.user_id = current_user.id
-    render :new if @picture.invalid?
+    if logged_in?
+      @picture = Picture.new(picture_params)
+      @picture.user_id = current_user.id
+      render :new if @picture.invalid?
+    else
+      redirect_to new_session_path
+    end
   end
 
   def create
@@ -32,6 +36,14 @@ class PicturesController < ApplicationController
       else
         render :new
       end
+    end
+  end
+
+  def show
+    if logged_in?
+      @picture = Picture.find(params[:id])
+    else
+      redirect_to new_session_path
     end
   end
 

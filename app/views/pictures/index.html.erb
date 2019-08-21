@@ -22,3 +22,37 @@
     </div>
   </div>
 </header>
+<div class="whole-area">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="left hidden-xs hidden-sm col-md-3"></div>
+        <div class="center col-xs-12 col-md-5">
+          <% @pictures.each do |picture| %>
+            <div class="content">
+              <div class="content_image">
+                <div class="content_user_info">
+                  <div class="content_user_link">
+                    <%= link_to("#{picture.user.name}", user_path(picture.user.id)) %>
+                  </div>
+                  <div class="content_update_time">
+                    <%= picture.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+                  </div>
+                </div>
+                <div class="content_image_area" >
+                  <img src="<%= picture.image.url %>" class="img-responsive" alt="Responsive image">
+                </div>
+              </div>
+              <div class="content_comment">
+                <div class="form-group">
+                  <p><%= excerpt_comment(picture.comment) %>
+                    <span class="to_link"><%= link_to("詳細", picture_path(picture.id)) %></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <div class="right hidden-xs hidden-sm col-md-4"></div>
+    </div>
+  </div>
+</div>
