@@ -6,4 +6,24 @@ class PicturesController < ApplicationController
       redirect_to new_session_path
     end
   end
+
+  def new
+    if logged_in?
+      @picture = Picture.new
+    else
+      redirect_to new_session_path
+    end
+  end
+
+  def newconfirm
+    @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
+    render :new if @picture.invalid?
+  end
+
+  private
+
+  def picture_params
+    params.require(:picture).permit(:comment, :image, :user_id, :image_cache)
+  end
 end
