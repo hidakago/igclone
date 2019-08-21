@@ -48,7 +48,31 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    if logged_in?
+      @picture = Picture.find(params[:id])
+    else
+      redirect_to new_session_path
+    end
+  end
+
+  def editconfirm
     @picture = Picture.find(params[:id])
+    @picture.comment = params[:picture][:comment]
+    @picture.image = params[:picture][:image]
+    render :edit if @picture.invalid?
+  end
+
+  def update
+    @picture = Picture.find(params[:id])
+    if params[:back]
+      render :edit
+    else
+      if @picture.update(picture_params)
+        redirect_to user_path(current_user.id), notice: "投稿の編集が完了しました！"
+      else
+        render :edit
+      end
+    end
   end
 
   def destroy
