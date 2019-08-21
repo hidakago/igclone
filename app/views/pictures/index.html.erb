@@ -1,5 +1,18 @@
-<h1>picture all</h1>
-<p>
-  <%= current_user.name %>
-  <%= link_to("ログアウト", session_path(current_user.id), method: :delete) %>
-</p>
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="index-header_left hidden-xs hidden-sm col-md-3"></div>
+      <div class="index-header_center_left col-xs-5 col-md-2">
+        <h4 class="index-apl_name">InstaGracious</h4>
+      </div>
+      <div class="index-header_center_center col-xs-2 col-md-1">
+      </div>
+      <div class="index-header_center_right col-xs-5 col-md-2">
+        <p class="index-user_link">
+          <%= link_to("#{current_user.name}", user_path(current_user.id)) %>
+        </p>
+      </div>
+      <div class="index-header_right hidden-xs hidden-sm col-md-4"></div>
+    </div>
+  </div>
+</header>
