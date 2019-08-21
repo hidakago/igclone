@@ -1,0 +1,41 @@
+header {
+  height: 77px;
+  background-color: #fff;
+  border-bottom: solid 1px #e6e6e6;
+  position : fixed;
+  top : 0;
+  z-index : 10;
+  width: 100%;
+}
+header .apl_name {
+  line-height: 77px;
+  font-family: 'cursive';
+  margin-top: 0px;
+  margin-left: 5px;
+}
+header .apl_name a {
+  color: #262626;
+  text-decoration: none;
+}
+header .header_center_center {
+  height: 77px;
+  line-height: 77px;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+}
+header .header_center_center .btn {
+  border-style: none;
+  font-size: 30px;
+  color: #262626;
+}
+header .user_link {
+  line-height: 77px;
+  font-weight: bold;
+  font-size: 14px;
+}
+header .user_link a {
+  color: #262626;
+  text-decoration: none;
+}
