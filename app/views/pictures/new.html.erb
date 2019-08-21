@@ -22,14 +22,14 @@
     </div>
   </div>
 </header>
-<div class="new-area">
+<div class="whole-area">
   <div class="container-fluid">
     <div class="row">
-      <div class="new-left hidden-xs hidden-sm col-md-3"></div>
-      <div class="new-center col-xs-12 col-md-5">
-        <div class="new-content">
+      <div class="left hidden-xs hidden-sm col-md-3"></div>
+      <div class="center col-xs-12 col-md-5">
+        <div class="content">
           <%= form_with(model: @picture, local: true, url: newconfirm_pictures_path ) do |f| %>
-            <div class="new-message">
+            <div class="message">
               <% if @picture.errors.any? %>
                 <div id="error_explanation" class="alert alert-danger" role="alert">
                   <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
@@ -41,12 +41,16 @@
                 </div>
               <% end %>
             </div>
-            <div class="new-content_image">
+            <div class="content_image">
               <label>画像</label>
-              <div id="img_field" onClick="$('#file').click()" >
-                <%= image_tag @picture.image.url if @picture.image && @picture.image.url %>
+              <div class="content_image_area" >
+                <div id="img_field" onClick="$('#file').click()" >
+                  <% if @picture.image && @picture.image.url %>
+                    <img src="<%= @picture.image.url %>" class="img-responsive" alt="Responsive image">
+                  <% end  %>
+                </div>
               </div>
-              <div class="new-content_image_input">
+              <div class="content_image_input">
                 <%= f.file_field :image, class: "image", id: "file" %>
                 <%= f.hidden_field :image_cache %>
               </div>
@@ -73,18 +77,18 @@
                 });
               </script>
             </div>
-            <div class="new-content_comment">
+            <div class="content_comment">
               <div class="form-group">
                 <%= f.text_area :comment, class: "form-control", placeholder: "コメント"  %>
               </div>
             </div>
-            <div class="new-content_submit">
+            <div class="content_submit">
               <%= f.submit "投稿確認" %>
             </div>
           <% end %>
         </div>
       </div>
-      <div class="new-right hidden-xs hidden-sm col-md-4"></div>
+      <div class="right hidden-xs hidden-sm col-md-4"></div>
     </div>
   </div>
 </div>

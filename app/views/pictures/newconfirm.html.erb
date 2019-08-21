@@ -1,1 +1,59 @@
-newconfirm
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="header_left hidden-xs hidden-sm col-md-3"></div>
+      <div class="header_center_left col-xs-5 col-md-2">
+        <h4 class="apl_name"><a href="<%= pictures_path %>">InstaGracious</a></h4>
+      </div>
+      <div class="header_center_center col-xs-2 col-md-1">
+        <a class="btn btn-default btn-xs" href="<%= user_path(current_user.id) %>" role="button">
+          <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+        </a>
+        <a class="btn btn-default btn-xs" href="<%= user_path(current_user.id) %>" role="button">
+          <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="header_center_right col-xs-5 col-md-2">
+        <p class="user_link">
+          <%= link_to("#{current_user.name}", user_path(current_user.id)) %>
+        </p>
+      </div>
+      <div class="header_right hidden-xs hidden-sm col-md-4"></div>
+    </div>
+  </div>
+</header>
+<div class="whole-area">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="left hidden-xs hidden-sm col-md-3"></div>
+      <div class="center col-xs-12 col-md-5">
+        <div class="content">
+          <%= form_with(model: @picture, local: true ) do |f| %>
+            <div class="content_image">
+              <label>画像</label>
+              <div class="content_image_area" >
+                <img src="<%= @picture.image.url %>" class="img-responsive" alt="Responsive image">
+              </div>
+              <div class="content_image_input">
+                <%= f.hidden_field :image_cache %>
+              </div>
+            </div>
+            <div class="content_comment">
+              <div class="form-group">
+                <p><%= @picture.comment %></p>
+                <%= f.hidden_field :comment %>
+              </div>
+            </div>
+            <div class="content_submit">
+              <%= f.submit "投稿する" %>
+            </div>
+            <div class="content_submit">
+              <input class="btn btn-default" type="submit" value="戻る" name="back">
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="right hidden-xs hidden-sm col-md-4"></div>
+    </div>
+  </div>
+</div>
