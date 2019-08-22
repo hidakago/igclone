@@ -58,7 +58,6 @@ class PicturesController < ApplicationController
   def editconfirm
     @picture = Picture.find(params[:id])
     @picture.comment = params[:picture][:comment]
-    @picture.image = params[:picture][:image]
     render :edit if @picture.invalid?
   end
 

@@ -28,7 +28,7 @@
       <div class="left hidden-xs hidden-sm col-md-3"></div>
       <div class="center col-xs-12 col-md-5">
         <div class="content">
-          <%= form_with(model: @picture, local: true, url: editconfirm_picture_path(@picture.user.id), method: :put ) do |f| %>
+          <%= form_with(model: @picture, local: true, url: editconfirm_picture_path(@picture.id), method: :put ) do |f| %>
             <div class="message">
               <% if @picture.errors.any? %>
                 <div id="error_explanation" class="alert alert-danger" role="alert">
