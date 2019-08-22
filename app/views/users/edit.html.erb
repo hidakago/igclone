@@ -1,0 +1,105 @@
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="header_left hidden-xs hidden-sm col-md-3"></div>
+      <div class="header_center_left col-xs-5 col-md-2">
+        <h4 class="apl_name"><a href="<%= pictures_path %>">InstaGracious</a></h4>
+      </div>
+      <div class="header_center_center col-xs-2 col-md-1">
+        <a class="btn btn-default btn-xs" href="<%= user_path(current_user.id) %>" role="button">
+          <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+        </a>
+        <a class="btn btn-default btn-xs" href="<%= user_path(current_user.id) %>" role="button">
+          <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="header_center_right col-xs-5 col-md-2">
+        <p class="user_link">
+          <%= link_to("#{current_user.name}", user_path(current_user.id)) %>
+        </p>
+      </div>
+      <div class="header_right hidden-xs hidden-sm col-md-4"></div>
+    </div>
+  </div>
+</header>
+<div class="whole-area">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="left hidden-xs hidden-sm col-md-3"></div>
+      <div class="center col-xs-12 col-md-5">
+        <div class="content">
+          <%= form_with(model: @user, local: true, url: user_path(current_user.id) ) do |f| %>
+            <div class="content_user_info">
+              <p><%= current_user.name %></p>
+            </div>
+            <div class="message">
+              <% if @user.errors.any? %>
+                <div id="error_explanation" class="alert alert-danger" role="alert">
+                  <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+                  <ul>
+                  <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            </div>
+            <div class="content_image">
+              <label>画像</label>
+              <div class="content_image_area" >
+                <div id="img_field" onClick="$('#file').click()" >
+                  <% if @user.image && @user.image.url %>
+                    <img src="<%= @user.image.url %>" class="img-responsive" alt="Responsive image">
+                  <% end  %>
+                </div>
+              </div>
+              <div class="content_image_input">
+                <%= f.file_field :image, class: "image", id: "file" %>
+                <%= f.hidden_field :image_cache %>
+                <%= f.hidden_field :email %>
+                <%= f.hidden_field :password %>
+                <%= f.hidden_field :password_confirmation %>
+              </div>
+              <script type="text/javascript">
+                $(function(){
+                  $fileField = $('#file')
+                  $($fileField).on('change', $fileField, function(e) {
+                    file = e.target.files[0]
+                    reader = new FileReader(),
+                    $preview = $("#img_field");
+                    reader.onload = (function(file) {
+                      return function(e) {
+                        $preview.empty();
+                        $preview.append($('<img>').attr({
+                          src: e.target.result,
+                          width: "100%",
+                          class: "preview",
+                          title: file.name
+                        }));
+                      };
+                    })(file);
+                    reader.readAsDataURL(file);
+                  });
+                });
+              </script>
+            </div>
+            <div class="content_comment">
+              <div class="form-group">
+                <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+              </div>
+            </div>
+            <div class="content_comment">
+              <div class="form-group">
+                <%= f.text_area :comment, class: "form-control", placeholder: "紹介文"  %>
+              </div>
+            </div>
+            <div class="content_submit">
+              <%= f.submit "編集完了", data: { confirm: "編集完了しますか？" } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="right hidden-xs hidden-sm col-md-4"></div>
+    </div>
+  </div>
+</div>

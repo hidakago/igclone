@@ -65,8 +65,6 @@
     color:  #3897f0;
     font-weight: bold;
   }
-
-
   .profile_whole_aria {
     margin-top: 140px;
   }
@@ -79,21 +77,23 @@
   .profile_picture {
     width: 291px;
     height: 266px;
-    background-color: yellow;
-
+  }
+  .profile_picture img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin: 0 auto;
   }
   .profile_contents {
     width: 613px;
     height: 266px;
-    background-color: blue;
+    margin-left: 20px;
     display: flex;
     flex-direction:column;
-
   }
   .profile_contents_head {
     width: 597px;
     height: 60px;
-    background-color: #fff;
     display: flex;
   }
   .profile_contents_name {
@@ -143,6 +143,8 @@
   .profile_contents_comment {
     width: 597px;
     height: 160px;
-    background-color: grey;
+    font-size: 16px;
+    line-height: 18px;
+    word-wrap: break-word;
   }
 }

@@ -26,6 +26,9 @@
   <%= form_with(model: @user, local: true ) do |f| %>
   <div class="profile_aria">
     <div class="profile_picture">
+      <% if @user.image && @user.image.url %>
+        <img src="<%= @user.image.url %>" class="img-responsive img-circle" alt="Responsive image">
+      <% end  %>
     </div>
     <div class="profile_contents">
       <div class="profile_contents_head">
