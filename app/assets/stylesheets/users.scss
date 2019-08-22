@@ -65,4 +65,84 @@
     color:  #3897f0;
     font-weight: bold;
   }
+
+
+  .profile_whole_aria {
+    margin-top: 140px;
+  }
+  .profile_aria {
+    margin: 0 auto;
+    width: 935px;
+    height: 266px;
+    display: flex;
+  }
+  .profile_picture {
+    width: 291px;
+    height: 266px;
+    background-color: yellow;
+
+  }
+  .profile_contents {
+    width: 613px;
+    height: 266px;
+    background-color: blue;
+    display: flex;
+    flex-direction:column;
+
+  }
+  .profile_contents_head {
+    width: 597px;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+  }
+  .profile_contents_name {
+    width: 240px;
+    height: 40px;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 40px;
+  }
+  .profile_contents_edit {
+    width: 150px;
+    height: 40px;
+    padding-top: 5px;
+    font-weight: bold;
+  }
+  .profile_contents_other {
+    width: 210px;
+    height: 40px;
+    font-size: 1.5rem;
+    color : #999999;
+    display: inline-block;
+    padding-top: 10px;
+  }
+  .profile_contents_other a {
+    height: 40px;
+    margin-top: 1.1rem;
+    color: #999999;
+    text-decoration: none;
+  }
+  .header-middle-box {
+    font-size: 1.5rem;
+    color : #fff;
+    margin-top: 1.1rem;
+    display: inline-block;
+    padding: 0;
+  }
+  .header-middle-box a {
+    color: #fff;
+  }
+  .space {
+    margin-left: 5rem;
+  }
+  .profile_contents_middle {
+    width: 597px;
+    height: 40px;
+  }
+  .profile_contents_comment {
+    width: 597px;
+    height: 160px;
+    background-color: grey;
+  }
 }

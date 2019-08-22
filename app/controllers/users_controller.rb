@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @pictures = @user.pictures.all.order(:updated_at).reverse_order
   end
 
   private
