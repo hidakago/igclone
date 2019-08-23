@@ -14,8 +14,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @pictures = @user.pictures.all.order(:updated_at).reverse_order
+    if logged_in?
+      @user = User.find(params[:id])
+      @pictures = @user.pictures.all.order(:updated_at).reverse_order
+    else
+      redirect_to new_session_path
+    end
   end
 
   def edit

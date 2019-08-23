@@ -56,9 +56,13 @@ class PicturesController < ApplicationController
   end
 
   def editconfirm
-    @picture = Picture.find(params[:id])
-    @picture.comment = params[:picture][:comment]
-    render :edit if @picture.invalid?
+    if logged_in?
+      @picture = Picture.find(params[:id])
+      @picture.comment = params[:picture][:comment]
+      render :edit if @picture.invalid?
+    else
+      redirect_to new_session_path
+    end
   end
 
   def update

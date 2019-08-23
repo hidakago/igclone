@@ -6,7 +6,7 @@
         <h4 class="apl_name"><a href="<%= pictures_path %>">InstaGracious</a></h4>
       </div>
       <div class="header_center_center col-xs-2 col-md-1">
-        <a class="btn btn-default btn-xs" href="<%= user_path(current_user.id) %>" role="button">
+        <a class="btn btn-default btn-xs" href="<%= new_picture_path %>" role="button">
           <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
         </a>
         <a class="btn btn-default btn-xs" href="<%= user_path(current_user.id) %>" role="button">
@@ -39,7 +39,7 @@
           <a class="btn btn-default" href="<%= edit_user_path(@user.id) %>" role="button">プロフィールを編集</a>
         </div>
         <div class="profile_contents_other">
-          <p><span class="space"><%= link_to("ログアウト", session_path(current_user.id), method: :delete) %></span></p>
+          <p><span class="space"><%= link_to("ログアウト", session_path(@user.id), method: :delete) %></span></p>
         </div>
       </div>
       <div class="profile_contents_middle">
