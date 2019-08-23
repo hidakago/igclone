@@ -41,6 +41,8 @@ class PicturesController < ApplicationController
 
   def show
     if logged_in?
+      # 該当の投稿が、既にユーザーがお気に入り済みなのかどうか判断
+      @favorite = current_user.favorites.find_by(picture_id: params[:id])
       @picture = Picture.find(params[:id])
     else
       redirect_to new_session_path

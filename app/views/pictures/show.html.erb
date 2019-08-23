@@ -49,13 +49,25 @@
             </div>
             <div class="content_submit">
               <p>
-                <span class="to_link"><%= link_to("編集", edit_picture_path(@picture.id)) %></span>
-                <span class="margin_left_10"></span>
-                <span class="to_link">
-                  <%= link_to("削除", picture_path(@picture.id), method: :delete, data: { confirm: "削除しますか？" }) %>
-                </span>
-                <span class="margin_left_10"></span>
-                <span class="to_link"><%= link_to("お気に入りに入れる", picture_path(@picture.id)) %></span>
+                <% if @picture.user_id == current_user.id %>
+                  <span class="to_link"><%= link_to("編集", edit_picture_path(@picture.id)) %></span>
+                  <span class="margin_left_10"></span>
+                  <span class="to_link">
+                    <%= link_to("削除", picture_path(@picture.id), method: :delete, data: { confirm: "削除しますか？" }) %>
+                  </span>
+                  <span class="margin_left_10"></span>
+                <% end %>
+                <% unless @picture.user_id == current_user.id %>
+                  <% if @favorite.present? %>
+                    <span class="to_link">
+                      <%= link_to("お気に入り解除する", favorite_path(id: @favorite.id), method: :delete) %>
+                    </span>
+                  <% else %>
+                    <span class="to_link">
+                      <%= link_to("お気に入りする", favorites_path(id: @picture.id), method: :post) %>
+                    </span>
+                  <% end %>
+                <% end %>
               </p>
             </div>
           </div>
