@@ -1,4 +1,12 @@
 class FavoritesController < ApplicationController
+  def index
+    if logged_in?
+      @pictures = current_user.favorite_pictures.all.order(:updated_at).reverse_order
+    else
+      redirect_to new_session_path
+    end
+  end
+
   def create
     favorite = current_user.favorites.create(picture_id: params[:id])
     redirect_to picture_path(params[:id]), notice: "#{favorite.picture.user.name}さんの投稿をお気に入り登録しました"
