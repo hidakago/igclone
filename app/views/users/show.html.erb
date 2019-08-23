@@ -35,12 +35,14 @@
         <div class="profile_contents_name">
           <p><%= @user.name %></p>
         </div>
-        <div class="profile_contents_edit">
-          <a class="btn btn-default" href="<%= edit_user_path(@user.id) %>" role="button">プロフィールを編集</a>
-        </div>
-        <div class="profile_contents_other">
-          <p><span class="space"><%= link_to("ログアウト", session_path(@user.id), method: :delete) %></span></p>
-        </div>
+        <% if @user.id == current_user.id %>
+          <div class="profile_contents_edit">
+            <a class="btn btn-default" href="<%= edit_user_path(@user.id) %>" role="button">プロフィールを編集</a>
+          </div>
+          <div class="profile_contents_other">
+            <p><span class="space"><%= link_to("ログアウト", session_path(@user.id), method: :delete) %></span></p>
+          </div>
+        <% end %>
       </div>
       <div class="profile_contents_middle">
       </div>
