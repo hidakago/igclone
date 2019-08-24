@@ -6,10 +6,10 @@
         <div class="new-message">
           <% if @user.errors.any? %>
             <div id="error_explanation" class="alert alert-danger" role="alert">
-              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+              <h2><%= @user.errors.count %>件のエラーがあります。</h2>
               <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
               <% end %>
               </ul>
             </div>

@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      picture: 投稿
+      user: ユーザー
+      favorite: お気に入り
+    attributes:
+      picture:
+        comment: コメント
+        image: 画像
+        user_id: ユーザーID
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      favorite:
+        user_id: ユーザーID
+        picture_id: 投稿ID
