@@ -32,6 +32,8 @@ class PicturesController < ApplicationController
       render :new
     else
       if @picture.save
+        @user = current_user
+        UserMailer.post_notification_mail(@user).deliver
         redirect_to user_path(current_user.id), notice: "投稿を作成しました！"
       else
         render :new
