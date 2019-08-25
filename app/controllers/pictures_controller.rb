@@ -54,6 +54,9 @@ class PicturesController < ApplicationController
   def edit
     if logged_in?
       @picture = Picture.find(params[:id])
+      if current_user.id != @picture.user.id
+        redirect_to picture_path(@picture.id)
+      end
     else
       redirect_to new_session_path
     end
@@ -62,8 +65,12 @@ class PicturesController < ApplicationController
   def editconfirm
     if logged_in?
       @picture = Picture.find(params[:id])
-      @picture.comment = params[:picture][:comment]
-      render :edit if @picture.invalid?
+      if current_user.id != @picture.user.id
+        redirect_to picture_path(@picture.id)
+      else
+        @picture.comment = params[:picture][:comment]
+        render :edit if @picture.invalid?
+      end
     else
       redirect_to new_session_path
     end

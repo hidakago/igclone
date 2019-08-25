@@ -25,6 +25,10 @@ class UsersController < ApplicationController
   def edit
     if logged_in?
       @user = User.find(params[:id])
+      if current_user.id != @user.id
+        redirect_to user_path(current_user.id)
+      end
+
     else
       redirect_to new_session_path
     end
